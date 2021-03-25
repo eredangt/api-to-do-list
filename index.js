@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 
 const estudante_controller = require('./estudantes-controller')
 
-mongoose.connect('mongodb+srv://usuariopadrao:YpNggOO1M6yHzFfK@cluster0.nkc2c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://usuario:senha@cluster0.nkc2c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.Promise = global.Promise
 try {
     let db = mongoose.connection
