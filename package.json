@@ -1,5 +1,5 @@
 {
-  "name": "api-estudantes",
+  "name": "api-to-do-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,16 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neumar/api-estudantes.git"
+    "url": "git+https://github.com/eredangt/api-to-do-list.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/neumar/api-estudantes/issues"
+    "url": "https://github.com/eredangt/api-to-do-list/issues"
   },
-  "homepage": "https://github.com/neumar/api-estudantes#readme",
+  "homepage": "https://github.com/eredangt/api-to-do-list#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.2"
+    "mongoose": "^6.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
