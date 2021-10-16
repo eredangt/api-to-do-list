@@ -37,7 +37,7 @@ exports.buscarTarefa = function (req, res) {
 
 exports.incluirTarefa = function (req, res) {
     let tarefa = new Tarefas({
-        //id: req.body.id,
+        id: req.body.id,
         description: req.body.description,
         deadline: req.body.deadline,
         complete: req.body.complete
