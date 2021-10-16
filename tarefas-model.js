@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let TarefasSchema = new Schema({
-    description: { type: String, required: true },
-    deadline: { type: Date, required: true },
-    complete: { type: Boolean, required: true }
+    descricao: { type: String, required: true },
+    prazo: { type: Date, required: true },
+    completa: { type: Boolean, required: true }
 }, { versionKey: false });
 
 module.exports = mongoose.model('Tarefas', TarefasSchema)

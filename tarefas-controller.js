@@ -1,48 +1,42 @@
 var Tarefas = require('./tarefas-model')
 
 exports.excluirTarefa = function (req, res) {
-    Tarefas.findByIdAndDelete({ _id: req.params.id }, function (err, tarefa) {
-        if (err) return next(err)
-        else res.send('Tarefa excluida.')
+    Tarefas.findByIdAndDelete(req.params.id, function (err, tarefa) {
+        if (err) return res.status(404).json(err)
+        return res.status(204).send("Tarefa excluida")
     })
 }
 
 exports.alterarTarefa = function (req, res) {
-    Tarefas.findByIdAndUpdate({ id: req.params.id },
-        {
-            description: req.body.description,
-            deadline: req.body.deadline,
-            complete: req.body.complete
-        },
-        function (err, tarefa) {
-            if (err) return next(err)
-            else res.send('Tarefa alterada.')
-        }
-    );
+    const doc = { descricao: req.body.descricao, prazo: req.body.prazo, completa: req.body.completa }
+    Tarefas.findByIdAndUpdate(req.params.id, doc, function (err, tarefa) {
+        if (err) return res.status(404).json(err)
+        return res.status(201).send("Tarefa alterada")
+    })
 }
 
 exports.listarTarefas = function (req, res) {
     Tarefas.find({}, function (err, tarefas) {
-        if (err) return next(err)
-        return res.json(tarefas);
+        if (err) return res.status(404).json(err)
+        return res.status(200).json(tarefas)
     })
 }
 
 exports.buscarTarefa = function (req, res) {
-    Tarefas.findById({ id: req.params.id }, function(err, tarefa){
-        if (err) return next(err)
-        return res.json(tarefa)
+    Tarefas.findById(req.params.id, function(err, tarefa){
+        if (err) return res.status(404).json(err)
+        return res.status(200).json(tarefa)
     })
 }
 
 exports.incluirTarefa = function (req, res) {
     let tarefa = new Tarefas({
-        description: req.body.description,
-        deadline: req.body.deadline,
-        complete: req.body.complete
+        descricao: req.body.descricao,
+        prazo: req.body.prazo,
+        completa: req.body.completa
     })
     tarefa.save(function (err){
         if (err) return next(err)
-        else res.send('Tarefa incluida com sucesso.')
+        return res.status(201).send("Tarefa criada")
     })
 }
