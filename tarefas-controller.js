@@ -3,7 +3,7 @@ var Tarefas = require('./tarefas-model')
 exports.excluirTarefa = function (req, res) {
     Tarefas.findByIdAndDelete({ id: req.params.id }, function (err, tarefa) {
         if (err) return next(err)
-        else res.send('Tarefa exluida com sucesso.')
+        else res.send('Tarefa excluida.')
     })
 }
 
@@ -16,7 +16,7 @@ exports.alterarTarefa = function (req, res) {
         },
         function (err, tarefa) {
             if (err) return next(err)
-            else res.send('Tarefa alterada com sucesso.')
+            else res.send('Tarefa alterada.')
         }
     );
 }
@@ -37,7 +37,7 @@ exports.buscarTarefa = function (req, res) {
 
 exports.incluirTarefa = function (req, res) {
     let tarefa = new Tarefas({
-        id: req.body.id,
+        //id: req.body.id,
         description: req.body.description,
         deadline: req.body.deadline,
         complete: req.body.complete
