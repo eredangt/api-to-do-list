@@ -24,7 +24,7 @@ exports.listarTarefas = function (req, res) {
 
 exports.buscarTarefa = function (req, res) {
     Tarefas.findById(req.params.id, function(err, tarefa){
-        if (err or tarefa == null) return res.status(404).json(err)
+        if (err || tarefa == null) return res.status(404).json(err)
         return res.status(200).json(tarefa)
     })
 }
