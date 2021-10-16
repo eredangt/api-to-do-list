@@ -19,9 +19,9 @@ const app = express()
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/*app.get('/', (req, res) => {
-    res.send('teste oi')
-})*/
+app.get('/', (req, res) => {
+    res.send('Pagina Inicial')
+})
 
 router.post('/tarefas', tarefa_controller.incluirTarefa)
 router.get('/tarefas', tarefa_controller.listarTarefas)
