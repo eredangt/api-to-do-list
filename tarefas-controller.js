@@ -1,14 +1,14 @@
 var Tarefas = require('./tarefas-model')
 
 exports.excluirTarefa = function (req, res) {
-    Tarefas.findByIdAndDelete(req.params.id, function (err, tarefa) {
+    Tarefas.findByIdAndDelete({ _id: req.params.id }, function (err, tarefa) {
         if (err) return next(err)
         else res.send('Tarefa excluida.')
     })
 }
 
 exports.alterarTarefa = function (req, res) {
-    Tarefas.findByIdAndUpdate(req.params.id,
+    Tarefas.findByIdAndUpdate({ id: req.params.id },
         {
             description: req.body.description,
             deadline: req.body.deadline,
@@ -29,7 +29,7 @@ exports.listarTarefas = function (req, res) {
 }
 
 exports.buscarTarefa = function (req, res) {
-    Tarefas.findById(req.params.id, function(err, tarefa){
+    Tarefas.findById({ id: req.params.id }, function(err, tarefa){
         if (err) return next(err)
         return res.json(tarefa)
     })
