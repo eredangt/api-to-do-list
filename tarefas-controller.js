@@ -44,6 +44,6 @@ exports.incluirTarefa = function (req, res) {
     })
     tarefa.save(function (err){
         if (err) return next(err)
+        else res.send('Tarefa incluida com sucesso.')
     })
-    res.send('Tarefa incluida com sucesso.')
 }
