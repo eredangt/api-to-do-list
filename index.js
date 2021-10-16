@@ -1,13 +1,13 @@
 const express = require("express")
 const mongoose = require("mongoose")
 
-const estudante_controller = require('./estudantes-controller')
+const tarefa_controller = require('./tarefas-controller')
 
 mongoose.connect('mongodb+srv://toDoList:J530wleRuf2Vlhfs@cluster-api-to-do-list.kcurz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.Promise = global.Promise
 try {
     let db = mongoose.connection
-    db.on('errr', console.error.bind(console, 'Erro de Conexão no Banco'))
+    db.on('errr', console.error.bind(console, 'Erro de Conexao no Banco'))
 } catch (e) {
     console.log(e)
 }
@@ -19,19 +19,20 @@ const app = express()
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.send('teste oi')
-})
+})*/
 
-router.post('/estudantes', estudante_controller.cadastrarEstudante)
-router.get('/estudantes', estudante_controller.listarEstudantes)
-router.get('/estudantes/:id', estudante_controller.buscarEstudante)
+router.post('/tarefas', tarefa_controller.incluirTarefa)
+router.get('/tarefas', tarefa_controller.listarTarefas)
+router.get('/tarefas/:id', tarefa_controller.buscarTarefa)
+router.delete('/tarefas/:id', tarefa_controller.excluirTarefa)
+router.put('/tarefas/:id', tarefa_controller.alterarTarefa)
 
 app.use('/', router)
-
 
 let porta = process.env.PORT || 4000
 
 app.listen(porta, () => {
-    console.log("servidor em execucao na porta " + porta)
+    console.log("Servidor em execucao na porta " + porta)
 })
